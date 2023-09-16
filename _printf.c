@@ -37,8 +37,12 @@ for (i = 0; format[i] != '\0'; i++)
 	str = va_arg(arglist, char *);
 	output(str, strlen(str));
 	}
+	if (format[i] == '%')
+	{
+	output_1('%');
 	}	
-count++;
+	}
+	count++;
 }
 }
 va_end(arglist);
