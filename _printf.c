@@ -39,8 +39,11 @@ for (i = 0; format[i] != '\0'; i++)
 	output(str, strlen(str));
 	}
 	if (format[i] == '%')
-	{
 	output_1('%');
+	else
+	{
+	output_1(format[i-1]);
+	output_1(format[i]);
 	}	
 	}
 	count++;

@@ -16,6 +16,9 @@ printf("Character:[%c]\n", 'H');
 _printf("String:[%s]\n", "I am a string !");
 printf("String:[%s]\n", "I am a string !");
 _printf("single percent %%\n");
-_printf(NULL);
+_printf("1\n");
+_printf("%k\n");
+printf("2\n");
+printf("%k\n");
 return (0);
 }
