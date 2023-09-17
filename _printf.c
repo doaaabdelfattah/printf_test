@@ -32,17 +32,17 @@ for (i = 0; format[i] != '\0'; i++)
 	{
 		output_1(va_arg(arglist, int));
 	}
-	if (format[i] == 's')
+	else if (format[i] == 's')
 	{
 	str = va_arg(arglist, char *);
 	if (str != NULL)
 	output(str, strlen(str));
 	}
-	if (format[i] == '%')
+	else if (format[i] == '%')
 	output_1('%');
 	else
 	{
-	output_1(format[i-1]);
+	output_1('%');
 	output_1(format[i]);
 	}	
 	}
