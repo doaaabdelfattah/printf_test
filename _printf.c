@@ -15,7 +15,10 @@ va_list arglist;
 va_start(arglist, format);
 
 if (format == NULL)
+{
+va_end(arglist);
 return (-1);
+}
 else
 {
 count = 0;
