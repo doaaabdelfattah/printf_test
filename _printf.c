@@ -35,6 +35,7 @@ for (i = 0; format[i] != '\0'; i++)
 	if (format[i] == 's')
 	{
 	str = va_arg(arglist, char *);
+	if (str != NULL)
 	output(str, strlen(str));
 	}
 	if (format[i] == '%')
