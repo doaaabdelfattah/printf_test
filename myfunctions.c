@@ -1,81 +1,62 @@
-#include <unistd.h>
-#include <string.h>
 #include "main.h"
 
 
-/**
- * output_1 - function
- * @c: char
- * Return: int
- */
-
-
-int output_1(char c)
+int (*get_func_print(char c))(va_list)
 {
-return (write(1, &c, 1));
-}
+    sp_t fun_list[] = {
+        {'s', my_p_string},
+        {'c', my_p_char}};
+    // {"i", p_int},
+    // {"d", p_dec},
+    // {"%", p_perc},
+    // {NULL, NULL}};
 
-/**
- * output - function
- * @str: char
- * @bytes: number
- * Return: int
- */
-int output(char *str, int bytes)
-{
-return (write(1, str, bytes));
-}
-
-int get_function(char sp, va_list list)
-{
-    int count = 0;
-    switch (sp)
+    int i;
+    for (i = 0; i < 3; i++)
     {
-    case 's':
-    {
-        count += p_string(va_arg(list, char *));
-        break;
+        if (c == fun_list[i].sp)
+            return (fun_list[i].func);
     }
-    case 'c':
-        count += p_char(va_arg(list, int));
-        break;
-    case '%':
-        count += p_percent('%');
-        break;
-    }
-    return (count);
+    return (NULL);
 }
+
 
 /**
  * p_string - function
  * @str: string
  * Return: int
  */
-int p_string(char *str)
+int my_p_string(va_list arglist)
 {
-int count;
-count = 0;
-if (str != NULL)
-count = write(1, str, strlen(str));
-return (count);
+    int len;
+    const char *str = va_arg(arglist, const char *);
+    // if (str == NULL) {
+    //     write(1, "(null)", 6);
+    //     return 6;  // Length of "(null)"
+    // }
+    len = 0;
+    while (str[len] != '\0') {
+        len++;
+    }
+return (write(1, str, len));
 }
 /**
  * p_char - function
  * @c: char
  * Return: int
  */
-int p_char(char c)
+int my_p_char(va_list arglist)
 {
-output_1(c);
+output_1(va_arg(arglist, int));
 return (1);
 }
-/**
- * p_percent - function
- * @c: char
- * Return: int
- */
-int p_percent(char c)
-{
-output_1(c);
-return (1);
-}
+// /**
+//  * p_percent - function
+//  * @c: char
+//  * Return: int
+//  */
+// int p_percent(char c)
+// {
+// output_1(c);
+// return (1);
+// }

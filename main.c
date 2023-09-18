@@ -8,9 +8,9 @@ int main(void)
     // len = _printf("css%ccs%scscses\n", 'T', "Test");
     // len2 = printf("css%ccs%scscses\n", 'T', "Test");
     // printf("Length:[%d, %d]\n", len, len2);
-printf("My name is %s and first letter is %c\n", "doaa", 'd');
-_printf("My name is %s and first letter is %c\n", "doaa", 'd');
-
+printf(" first letter is %c My name is %s \n", 'd', "doaa");
+_printf(" first letter is %c My name is %s \n", 'd', "doaa");
+myprintf(" first letter is %c My name is %s \n", 'd', "doaa");
 }
 // _printf("%s%c%c%c%s%%%s%c", "Loading", '.', '.', '.', "99", " Please wait", '\n');
 // printf("%s%c%c%c%s%%%s%c", "Loading", '.', '.', '.', "99", " Please wait", '\n');
