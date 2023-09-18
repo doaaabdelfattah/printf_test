@@ -64,7 +64,7 @@ return (count);
  * @c: char
  * Return: int
  */
-int p_char(int c)
+int p_char(char c)
 {
 output_1(c);
 return (1);
