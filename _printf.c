@@ -8,12 +8,9 @@
 *Return: int
 */
 int _printf(const char *format, ...)
-{
-int i, count;
-char *str;
+{ int i, count;
 va_list arglist;
 va_start(arglist, format);
-
 if (format == NULL)
 {
 va_end(arglist);
@@ -24,32 +21,31 @@ else
 count = 0;
 for (i = 0; format[i] != '\0'; i++)
 {
-	if (format[i] != '%')
-	{
-	output_1(format[i]);
-	}
-	else
-	{
-	i++;
-	if (format[i] == 'c')
-	{
-		output_1(va_arg(arglist, int));
-	}
-	else if (format[i] == 's')
-	{
-	str = va_arg(arglist, char *);
-	if (str != NULL)
-	output(str, strlen(str));
-	}
-	else if (format[i] == '%')
-	output_1('%');
-	else
-	{
-	output_1('%');
-	output_1(format[i]);
-	}	
-	}
-	count++;
+if (format[i] != '%' && format[i+1] != '\0')
+{
+output_1(format[i]);
+count++;
+}
+else
+{
+i++;
+switch (format[i])
+{
+case 's':
+{
+count += p_string(va_arg(arglist, char *));
+break;
+}
+case 'c':
+count += p_char(va_arg(arglist, int));
+break;
+case '%':
+count += p_percent('%');
+break;
+}
+
+}
+
 }
 }
 va_end(arglist);
