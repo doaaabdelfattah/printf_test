@@ -28,21 +28,7 @@ count++;
 }
 else
 {
-i++;
-switch (format[i])
-{
-case 's':
-{
-count += p_string(va_arg(arglist, char *));
-break;
-}
-case 'c':
-count += p_char(va_arg(arglist, int));
-break;
-case '%':
-count += p_percent('%');
-break;
-}
+count += get_function(format[++i], arglist);
 }
 }
 }

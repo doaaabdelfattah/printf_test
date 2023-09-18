@@ -1,5 +1,6 @@
 #include <unistd.h>
 #include <string.h>
+#include "main.h"
 
 
 /**
@@ -23,6 +24,26 @@ return (write(1, &c, 1));
 int output(char *str, int bytes)
 {
 return (write(1, str, bytes));
+}
+
+int get_function(char sp, va_list list)
+{
+    int count = 0;
+    switch (sp)
+    {
+    case 's':
+    {
+        count += p_string(va_arg(list, char *));
+        break;
+    }
+    case 'c':
+        count += p_char(va_arg(list, int));
+        break;
+    case '%':
+        count += p_percent('%');
+        break;
+    }
+    return (count);
 }
 
 /**
