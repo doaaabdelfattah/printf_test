@@ -21,7 +21,7 @@ else
 count = 0;
 for (i = 0; format[i] != '\0'; i++)
 {
-if (format[i] != '%' && format[i+1] != '\0')
+if (format[i] != '%' && format[i + 1] != '\0')
 {
 output_1(format[i]);
 count++;
@@ -43,9 +43,7 @@ case '%':
 count += p_percent('%');
 break;
 }
-
 }
-
 }
 }
 va_end(arglist);
